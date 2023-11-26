@@ -7,8 +7,8 @@ SCENARIO(feature1)
     GIVEN(a_sac_program,
         "not a sac program\n")
     WHEN(i_compile_it_with, "-noprelude")
-    THEN(the_status_code_is, 256)
-    THEN(the_output_contains, "type expected", 1)
+    THEN(compilation_failed)
+    THEN(sac2c_output_contains, "Failed to construct a syntax tree", 1)
 ENDSCENARIO
 
 SCENARIO(feature2)
@@ -18,7 +18,7 @@ SCENARIO(feature2)
         "    return 0;\n"
         "}\n")
     WHEN(i_compile_it_with, "-noprelude")
-    THEN(there_were_no_errors)
+    THEN(compilation_succeeded)
     WHEN(i_run_it)
-    THEN(there_were_no_errors)
+    THEN(runtime_succeeded)
 ENDSCENARIO

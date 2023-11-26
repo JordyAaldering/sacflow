@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.19)
 project(sacflow C)
 
 # Add sacflow sources
-file(GLOB sources *.c *.h)
+file(GLOB_RECURSE sources *.c *.h)
 add_library(src ${sources})
 
 # Retrieve tests from TEST_DIR, assuming it has been defined by a parent directory
