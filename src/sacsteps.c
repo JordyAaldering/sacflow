@@ -1,5 +1,7 @@
 #include <assert.h>
+#include <stdlib.h>
 #include <stdio.h>
+#include "debug.h"
 
 #include "sacsteps.h"
 
@@ -27,7 +29,7 @@ void i_run_it()
 
 void the_status_code_is(int code)
 {
-    assert(status_code == code);
+    ASSERT(code == status_code, "Expected status code to be %d, but was %d", code, status_code);
 }
 
 void there_were_no_errors()

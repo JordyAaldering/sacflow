@@ -44,8 +44,7 @@
 
 #define SCENARIO(name)                                              \
     static void name() {                                            \
-        printf("Running scenario %s\n", __FUNCTION__);              \
-        background();
+        printf("Running scenario %s\n", __FUNCTION__);
 #define ENDSCENARIO }
 
 #define GIVEN(func, ...) func(__VA_ARGS__);
