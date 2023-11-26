@@ -18,7 +18,7 @@ SCENARIO(feature2)
         "    return 0;\n"
         "}\n")
     WHEN(i_compile_it_with, "-noprelude")
-    THEN(the_status_code_is, 0)
+    THEN(there_were_no_errors)
     WHEN(i_run_it)
-    THEN(the_status_code_is, 0)
+    THEN(there_were_no_errors)
 ENDSCENARIO

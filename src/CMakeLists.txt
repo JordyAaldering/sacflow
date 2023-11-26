@@ -30,7 +30,7 @@ foreach(test ${tests})
     # Add test case for each scenario
     foreach(i RANGE 1 ${n_scenarios})
         message(STATUS "Adding test scenario ${i} for ${stem}")
-        add_test(${stem}_test_${i} ${stem} ${i})
+        add_test("${stem} scenario ${i}" ${stem} ${i})
     endforeach()
 
 endforeach()

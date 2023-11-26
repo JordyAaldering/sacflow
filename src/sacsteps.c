@@ -29,17 +29,12 @@ void i_run_it()
 
 void the_status_code_is(int code)
 {
-    ASSERT(code == status_code, "Expected status code to be %d, but was %d", code, status_code);
+    ASSERT(status_code == code, "Expected status code to be %d, but was %d", code, status_code);
 }
 
 void there_were_no_errors()
 {
-    assert(status_code == 0);
-}
-
-void there_were_errors()
-{
-    assert(status_code == 0);
+    ASSERT(status_code == 0, "Expected success, but status code was %d", status_code);
 }
 
 void the_output_contains(const char *str, int amount)
