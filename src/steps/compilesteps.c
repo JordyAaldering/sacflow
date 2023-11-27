@@ -2,9 +2,16 @@
 
 #include "compilesteps.h"
 
+static char *compiler_path;
+
 static char *sac_output = "";
 
 static int status_code = -1;
+
+void a_sac_compiler(char *path)
+{
+    compiler_path = path;
+}
 
 void a_sac_program(const char *program)
 {
@@ -17,7 +24,7 @@ void i_compile_it_with(const char *args)
 {
     // Create the command
     char command[256];
-    sprintf(command, "sac2c ./a.sac %s 2>&1", args);
+    sprintf(command, "%s ./a.sac %s 2>&1", compiler_path, args);
 
     // Run the command
     FILE *pipe = popen(command, "r");

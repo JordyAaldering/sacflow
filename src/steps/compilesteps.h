@@ -3,6 +3,7 @@
 
 #include <stdlib.h>
 
+void a_sac_compiler(char *path);
 void a_sac_program(const char *program);
 
 void i_compile_it_with(const char *args);

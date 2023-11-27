@@ -3,6 +3,9 @@
 
 FEATURE(example, parse_error, returns)
 {
+    BACKGROUND
+        GIVEN(a_sac_compiler, "sac2c")
+
     SCENARIO(parse_error)
         GIVEN(a_sac_program, STR(
             int main()

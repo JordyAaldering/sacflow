@@ -45,11 +45,14 @@
                                                                     \
     void background()
 
+#define BACKGROUND
+
 #define SCENARIO(name)                                              \
     } /* Close background, or previous scenario */                  \
                                                                     \
     static void name() {                                            \
-        printf("Running scenario %s\n", __FUNCTION__);
+        printf("Running scenario %s\n", __FUNCTION__);              \
+        background();
 
 #define GIVEN(func, ...) func(__VA_ARGS__);
 #define WHEN(func, ...) func(__VA_ARGS__);
