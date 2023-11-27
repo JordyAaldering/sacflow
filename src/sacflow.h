@@ -43,7 +43,7 @@
         }                                                           \
     }                                                               \
                                                                     \
-    void background()
+    void background(void)
 
 #define BACKGROUND
 
