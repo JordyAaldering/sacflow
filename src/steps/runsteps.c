@@ -5,12 +5,10 @@
 
 static char *run_output = "";
 
-static int status_code = -1;
+static int result = -1;
 
 void i_run_it()
 {
-    status_code = system("./a.out");
-
     // Create the command
     char *command = "./a.out 2>&1";
 
@@ -33,17 +31,12 @@ void i_run_it()
 
     int status = pclose(pipe);
     ASSERT(status != -1, "Could not close command stream");
-    status_code = WEXITSTATUS(status);
+    result = WEXITSTATUS(status);
 }
 
-void runtime_succeeded()
+void the_result_is(int expected)
 {
-    ASSERT(status_code == 0, "Expected success, but status code was %d", status_code);
-}
-
-void the_status_code_is(int code)
-{
-    ASSERT(status_code == code, "Expected status code to be %d, but was %d", code, status_code);
+    ASSERT(result == expected, "Expected status code to be %d, but was %d", expected, result);
 }
 
 void runtime_output_contains(const char *str, size_t amount)
