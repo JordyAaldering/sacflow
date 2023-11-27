@@ -1,6 +1,8 @@
 #include "debug.h"
 
-#include "compilesteps.h"
+#include "compsteps.h"
+
+#define PROG_NAME "a.sac"
 
 static char *compiler_path;
 static char *compiler_args = "";
@@ -8,15 +10,15 @@ static char *compiler_args = "";
 static int status_code = -1;
 static char *sac_output = "";
 
-void a_sac_compiler(char *path)
+void a_compiler(char *path)
 {
     compiler_path = path;
 }
 
-void a_sac_program(const char *program)
+void a_program(const char *contents)
 {
-    FILE *fptr = fopen("a.sac", "w");
-    fprintf(fptr, "%s", program);
+    FILE *fptr = fopen(PROG_NAME, "w");
+    fprintf(fptr, "%s", contents);
     fclose(fptr);
 }
 
@@ -30,7 +32,7 @@ void i_compile_it(void)
 {
     // Create the command
     char command[256];
-    sprintf(command, "%s ./a.sac %s 2>&1", compiler_path, compiler_args);
+    sprintf(command, "%s ./" PROG_NAME " %s 2>&1", compiler_path, compiler_args);
 
     // Run the command
     FILE *pipe = popen(command, "r");
@@ -54,7 +56,7 @@ void i_compile_it(void)
     status_code = WEXITSTATUS(status);
 }
 
-void compilation_succeeded(void)
+void compilation_succeeds(void)
 {
     int check = status_code == 0;
     ASSERT(check, "Expected compilation to succeed, but status code was %d", status_code);
@@ -63,7 +65,7 @@ void compilation_succeeded(void)
     }
 }
 
-void compilation_failed(void)
+void compilation_fails(void)
 {
     int check = status_code == 1;
     ASSERT(check, "Expected compilation to fail, but status code was %d", status_code);
@@ -72,7 +74,7 @@ void compilation_failed(void)
     }
 }
 
-void sac2c_output_contains(const char *str, size_t amount)
+void compile_output_contains(const char *str, size_t amount)
 {
     size_t count = 0;
     size_t n = strlen(str);
