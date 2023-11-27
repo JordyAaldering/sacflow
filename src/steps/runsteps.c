@@ -3,9 +3,8 @@
 
 #include "runsteps.h"
 
-static char *run_output = "";
-
 static int result = -1;
+static char *run_output = "";
 
 void i_run_it(void)
 {

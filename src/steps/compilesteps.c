@@ -3,10 +3,10 @@
 #include "compilesteps.h"
 
 static char *compiler_path;
-
-static char *sac_output = "";
+static char *compiler_args = "";
 
 static int status_code = -1;
+static char *sac_output = "";
 
 void a_sac_compiler(char *path)
 {
@@ -20,11 +20,17 @@ void a_sac_program(const char *program)
     fclose(fptr);
 }
 
-void i_compile_it_with(const char *args)
+void arguments(char *args)
+{
+    // TODO: concatenate if applied multiple times
+    compiler_args = args;
+}
+
+void i_compile_it(void)
 {
     // Create the command
     char command[256];
-    sprintf(command, "%s ./a.sac %s 2>&1", compiler_path, args);
+    sprintf(command, "%s ./a.sac %s 2>&1", compiler_path, compiler_args);
 
     // Run the command
     FILE *pipe = popen(command, "r");
