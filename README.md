@@ -6,6 +6,10 @@ Given-when-then testing for the Single assignment C (SaC) compiler.
 A test:
 
 ```
+AS_A(compiler developer)
+I_WANT(to be able to write tests easily)
+SO_THAT(we can ensure good quality of the compiler)
+
 FEATURE(example, parse_error, returns)
 {
     BACKGROUND

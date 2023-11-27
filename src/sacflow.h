@@ -18,6 +18,10 @@
 #define _FORWARD_DECL(N, ...) FORWARD_DECL_ ## N(__VA_ARGS__)
 #define FORWARD_DECL(N, ...) _FORWARD_DECL(N, __VA_ARGS__)
 
+#define AS_A(_)
+#define I_WANT(_)
+#define SO_THAT(_)
+
 #define FEATURE(name, ...)                                          \
     FORWARD_DECL(NUM_ARGS(__VA_ARGS__), __VA_ARGS__)                \
                                                                     \
