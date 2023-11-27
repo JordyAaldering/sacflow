@@ -51,7 +51,7 @@
     } /* Close background, or previous scenario */                  \
                                                                     \
     static void name(void) {                                        \
-        printf("Running scenario %s\n", __FUNCTION__);              \
+        printf("Running scenario " #name "\n");                     \
         background();
 
 #define GIVEN(func, ...) func(__VA_ARGS__);
