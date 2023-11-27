@@ -50,12 +50,20 @@ void i_compile_it_with(const char *args)
 
 void compilation_succeeded(void)
 {
-    ASSERT(status_code == 0, "Expected compilation to succeed, but status code was %d", status_code);
+    int check = status_code == 0;
+    ASSERT(check, "Expected compilation to succeed, but status code was %d", status_code);
+    if (!check) {
+        LOG_ERROR("%s", sac_output);
+    }
 }
 
 void compilation_failed(void)
 {
-    ASSERT(status_code == 1, "Expected compilation to fail, but status code was %d", status_code);
+    int check = status_code == 1;
+    ASSERT(check, "Expected compilation to fail, but status code was %d", status_code);
+    if (!check) {
+        LOG_ERROR("%s", sac_output);
+    }
 }
 
 void sac2c_output_contains(const char *str, size_t amount)
