@@ -33,12 +33,12 @@
                 printf("Expected a number, got '%s'\n", argv[1]);   \
                 return 1;                                           \
             }                                                       \
-            if (choice < 1 || choice > NUM_ARGS(__VA_ARGS__)) {     \
+            if (choice < 0 || choice > NUM_ARGS(__VA_ARGS__) - 1) { \
                 printf("Choice %d out of bounds", choice);          \
                 return 1;                                           \
             }                                                       \
             printf("Running test %d\n", choice);                    \
-            scenarios[choice - 1]();                                \
+            scenarios[choice]();                                    \
             return 0;                                               \
         }                                                           \
     }                                                               \

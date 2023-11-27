@@ -23,14 +23,18 @@ foreach(test ${tests})
 
     # Find out how many scenarios are defined
     file(READ ${test} contents)
-    string(REGEX MATCHALL SCENARIO scenarios "${contents}")
+    string(REGEX MATCHALL "SCENARIO\\([^\\)]+\\)" scenarios "${contents}")
     list(LENGTH scenarios n_scenarios)
-    message(STATUS "Adding ${n_scenarios} scenarios for feature: ${stem}")
+    message(STATUS "Found ${n_scenarios} scenarios for feature: ${stem}")
+    math(EXPR n_scenarios "${n_scenarios} - 1")
 
     # Add test case for each scenario
-    foreach(i RANGE 1 ${n_scenarios})
-        message(STATUS "Adding test scenario ${i} for ${stem}")
-        add_test("${stem} scenario ${i}" ${stem} ${i})
+    foreach(i RANGE ${n_scenarios})
+        list(GET scenarios ${i} scenario)
+        # Extract scenario name from `SCENARIO(scenario_name)`
+        string(REGEX REPLACE "SCENARIO\\(([^\\)]+)\\)" "\\1" scenario_name "${scenario}")
+        message(STATUS "Adding test scenario ${scenario_name} for ${stem}")
+        add_test("${stem} scenario: ${scenario_name}" ${stem} ${i})
     endforeach()
 
 endforeach()
