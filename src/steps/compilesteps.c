@@ -48,12 +48,12 @@ void i_compile_it_with(const char *args)
     status_code = WEXITSTATUS(status);
 }
 
-void compilation_succeeded()
+void compilation_succeeded(void)
 {
     ASSERT(status_code == 0, "Expected compilation to succeed, but status code was %d", status_code);
 }
 
-void compilation_failed()
+void compilation_failed(void)
 {
     ASSERT(status_code == 1, "Expected compilation to fail, but status code was %d", status_code);
 }

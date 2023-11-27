@@ -3,7 +3,7 @@
 
 #include <stdlib.h>
 
-extern void i_run_it();
+extern void i_run_it(void);
 
 extern void the_result_is(int expected);
 extern void runtime_output_contains(const char *str, size_t amount);

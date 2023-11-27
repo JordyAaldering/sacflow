@@ -7,7 +7,7 @@ static char *run_output = "";
 
 static int result = -1;
 
-void i_run_it()
+void i_run_it(void)
 {
     // Create the command
     char *command = "./a.out 2>&1";
