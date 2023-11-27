@@ -41,12 +41,15 @@
             scenarios[choice - 1]();                                \
             return 0;                                               \
         }                                                           \
-    }
+    }                                                               \
+                                                                    \
+    void background()
 
 #define SCENARIO(name)                                              \
+    } /* Close background, or previous scenario */                  \
+                                                                    \
     static void name() {                                            \
         printf("Running scenario %s\n", __FUNCTION__);
-#define ENDSCENARIO }
 
 #define GIVEN(func, ...) func(__VA_ARGS__);
 #define WHEN(func, ...) func(__VA_ARGS__);

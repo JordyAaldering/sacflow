@@ -23,7 +23,7 @@ foreach(test ${tests})
 
     # Find out how many scenarios are defined
     file(READ ${test} contents)
-    string(REGEX MATCHALL ENDSCENARIO scenarios "${contents}")
+    string(REGEX MATCHALL SCENARIO scenarios "${contents}")
     list(LENGTH scenarios n_scenarios)
     message(STATUS "Adding ${n_scenarios} scenarios for feature: ${stem}")
 
