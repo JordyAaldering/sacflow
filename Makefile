@@ -16,7 +16,7 @@ define RUN_EXAMPLE =
 	fi
 endef
 
-all: build test
+all: clean build test
 
 build:
 	$(call BUILD_EXAMPLE,$(BUILD_DIR))
