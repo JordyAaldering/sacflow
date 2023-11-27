@@ -3,13 +3,13 @@
 
 #include <stdlib.h>
 
-void a_sac_compiler(char *path);
-void a_sac_program(const char *program);
+extern void a_sac_compiler(char *path);
+extern void a_sac_program(const char *program);
 
-void i_compile_it_with(const char *args);
+extern void i_compile_it_with(const char *args);
 
-void compilation_succeeded();
-void compilation_failed();
-void sac2c_output_contains(const char *str, size_t amount);
+extern void compilation_succeeded();
+extern void compilation_failed();
+extern void sac2c_output_contains(const char *str, size_t amount);
 
 #endif /* _COMPILESTEPS_H_ */
