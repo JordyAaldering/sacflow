@@ -1,7 +1,5 @@
 cmake_minimum_required(VERSION 3.19)
 
-project(sacflow C)
-
 # Add sacflow sources
 file(GLOB_RECURSE sources *.c *.h)
 add_library(src ${sources})
