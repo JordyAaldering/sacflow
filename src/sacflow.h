@@ -3,20 +3,30 @@
 
 #include <stdio.h>
 
-#define STR(...) #__VA_ARGS__
-
 #define _NUM_ARGS(X,X64,X63,X62,X61,X60,X59,X58,X57,X56,X55,X54,X53,X52,X51,X50,X49,X48,X47,X46,X45,X44,X43,X42,X41,X40,X39,X38,X37,X36,X35,X34,X33,X32,X31,X30,X29,X28,X27,X26,X25,X24,X23,X22,X21,X20,X19,X18,X17,X16,X15,X14,X13,X12,X11,X10,X9,X8,X7,X6,X5,X4,X3,X2,X1,N,...) N
 #define NUM_ARGS(...) _NUM_ARGS(0, __VA_ARGS__, 64,63,62,61,60,59,58,57,56,55,54,53,52,51,50,49,48,47,46,45,44,43,42,41,40,39,38,37,36,35,34,33,32,31,30,29,28,27,26,25,24,23,22,21,20,19,18,17,16,15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0)
 
-#define FORWARD_DECL_1(name)      static void name(void);
-#define FORWARD_DECL_2(name, ...) static void name(void); FORWARD_DECL_1(__VA_ARGS__)
-#define FORWARD_DECL_3(name, ...) static void name(void); FORWARD_DECL_2(__VA_ARGS__)
-#define FORWARD_DECL_4(name, ...) static void name(void); FORWARD_DECL_3(__VA_ARGS__)
-#define FORWARD_DECL_5(name, ...) static void name(void); FORWARD_DECL_4(__VA_ARGS__)
-#define FORWARD_DECL_6(name, ...) static void name(void); FORWARD_DECL_5(__VA_ARGS__)
+#define FORWARD_DECL_1(name)       static void name(void);
+#define FORWARD_DECL_2(name, ...)  static void name(void); FORWARD_DECL_1(__VA_ARGS__)
+#define FORWARD_DECL_3(name, ...)  static void name(void); FORWARD_DECL_2(__VA_ARGS__)
+#define FORWARD_DECL_4(name, ...)  static void name(void); FORWARD_DECL_3(__VA_ARGS__)
+#define FORWARD_DECL_5(name, ...)  static void name(void); FORWARD_DECL_4(__VA_ARGS__)
+#define FORWARD_DECL_6(name, ...)  static void name(void); FORWARD_DECL_5(__VA_ARGS__)
+#define FORWARD_DECL_7(name, ...)  static void name(void); FORWARD_DECL_6(__VA_ARGS__)
+#define FORWARD_DECL_8(name, ...)  static void name(void); FORWARD_DECL_7(__VA_ARGS__)
+#define FORWARD_DECL_9(name, ...)  static void name(void); FORWARD_DECL_8(__VA_ARGS__)
+#define FORWARD_DECL_10(name, ...) static void name(void); FORWARD_DECL_9(__VA_ARGS__)
+#define FORWARD_DECL_11(name, ...) static void name(void); FORWARD_DECL_10(__VA_ARGS__)
+#define FORWARD_DECL_12(name, ...) static void name(void); FORWARD_DECL_11(__VA_ARGS__)
+#define FORWARD_DECL_13(name, ...) static void name(void); FORWARD_DECL_12(__VA_ARGS__)
+#define FORWARD_DECL_14(name, ...) static void name(void); FORWARD_DECL_13(__VA_ARGS__)
+#define FORWARD_DECL_15(name, ...) static void name(void); FORWARD_DECL_14(__VA_ARGS__)
+#define FORWARD_DECL_16(name, ...) static void name(void); FORWARD_DECL_15(__VA_ARGS__)
 
 #define _FORWARD_DECL(N, ...) FORWARD_DECL_ ## N(__VA_ARGS__)
 #define FORWARD_DECL(N, ...) _FORWARD_DECL(N, __VA_ARGS__)
+
+#define STR(...) #__VA_ARGS__
 
 #define AS_A(_)
 #define I_WANT(_)
