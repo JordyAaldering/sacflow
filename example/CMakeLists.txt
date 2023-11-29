@@ -7,8 +7,8 @@ add_library(steps examplesteps.h examplesteps.c)
 
 enable_testing()
 
-# Set directory where tests are defined
-set(TEST_DIR ${PROJECT_SOURCE_DIR}/tests)
+file(GLOB tests tests/*.c)
+set(SEAFLOW_TESTS ${tests})
 
 # Note that in a normal folder structure these would just be:
 include_directories(sacflow/src PUBLIC)

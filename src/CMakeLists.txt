@@ -3,12 +3,7 @@ cmake_minimum_required(VERSION 3.19)
 # Add seaflow sources
 add_library(src debug.h seaflow.h seasteps.h seasteps.c)
 
-# Retrieve tests from TEST_DIR, assuming it has been defined by a parent directory
-file(GLOB tests ${TEST_DIR}/*.c)
-list(LENGTH tests n_tests)
-message(STATUS "Found ${n_tests} test files in ${TEST_DIR}/*.c")
-
-foreach(test ${tests})
+foreach(test ${SEAFLOW_TESTS})
     # Get test name from path
     cmake_path(GET test STEM stem)
 
