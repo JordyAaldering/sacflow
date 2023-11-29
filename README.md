@@ -1,7 +1,9 @@
 
-# sacflow
+# seaflow
 
-Given-when-then testing for the Single assignment C (SaC) compiler.
+Seaflow (C-flow) is a library for writing given-when-then test cases for C programs.
+
+It is based on pre-existing tools like [SpecFlow](https://specflow.org/) for C#, and [Cucumber](https://cucumber.io/) for Java.
 
 A test:
 
