@@ -3,6 +3,7 @@ cmake_minimum_required(VERSION 3.19)
 # Add seaflow sources
 add_library(seaflow debug.h seaflow.h seasteps.h seasteps.c)
 
+# Remove all logic here and place it in some script file that can be reused by project using seaflow?
 foreach(test ${SEAFLOW_TESTS})
     # Get test name from path
     cmake_path(GET test STEM stem)
