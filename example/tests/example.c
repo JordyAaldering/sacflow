@@ -1,7 +1,7 @@
 #include "seaflow.h"
 #include "seasteps.h"
 
-#include "../steps/examplesteps.h"
+#include "examplesteps.h"
 
 AS_A(compiler developer)
 I_WANT(to be able to write tests easily)
