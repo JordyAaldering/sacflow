@@ -1,5 +1,7 @@
-#include "sacsteps.h"
-#include "sacflow.h"
+#include "seaflow.h"
+#include "seasteps.h"
+
+#include "../examplesteps.h"
 
 AS_A(compiler developer)
 I_WANT(to be able to write tests easily)
@@ -12,7 +14,7 @@ FEATURE(example, parse_error, returns)
         GIVEN(arguments, "-noprelude")
 
     SCENARIO(parse_error)
-        GIVEN(a_program, STR(
+        GIVEN(a_file, "a.sac", STR(
             int main()
             {
                 nonsense
@@ -23,7 +25,7 @@ FEATURE(example, parse_error, returns)
         THEN(compile_output_contains, "Failed to construct a syntax tree", 1)
 
     SCENARIO(returns)
-        GIVEN(a_program, STR(
+        GIVEN(a_file, "a.sac", STR(
             int main()
             {
                 return 123;

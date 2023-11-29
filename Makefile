@@ -4,7 +4,7 @@ define BUILD_EXAMPLE =
 	mkdir -p $(1);    \
 	cd $(1);          \
 	cmake ../example; \
-	$(MAKE) -j;       \
+	$(MAKE);          \
 	cd -
 endef
 

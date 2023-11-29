@@ -1,5 +1,5 @@
-#ifndef _SACFLOW_H_
-#define _SACFLOW_H_
+#ifndef _SEAFLOW_H_
+#define _SEAFLOW_H_
 
 #include <stdio.h>
 
@@ -72,4 +72,4 @@
 #define WHEN(func, ...) func(__VA_ARGS__);
 #define THEN(func, ...) func(__VA_ARGS__);
 
-#endif /* _SACFLOW_H_ */
+#endif /* _SEAFLOW_H_ */

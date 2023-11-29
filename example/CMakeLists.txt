@@ -2,10 +2,13 @@ cmake_minimum_required(VERSION 3.19)
 
 project(Tests C)
 
+# TODO: surely there is a better way to do this
+add_library(steps examplesteps.h examplesteps.c)
+
 enable_testing()
 
 # Set directory where tests are defined
-set(TEST_DIR ${PROJECT_SOURCE_DIR})
+set(TEST_DIR ${PROJECT_SOURCE_DIR}/tests)
 
 # Include sacflow project
 include_directories(${CMAKE_CURRENT_SOURCE_DIR}/../src PUBLIC)

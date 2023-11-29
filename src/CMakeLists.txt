@@ -1,8 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 
-# Add sacflow sources
-file(GLOB_RECURSE sources *.c *.h)
-add_library(src ${sources})
+# Add seaflow sources
+add_library(src debug.h seaflow.h seasteps.h seasteps.c)
 
 # Retrieve tests from TEST_DIR, assuming it has been defined by a parent directory
 file(GLOB tests ${TEST_DIR}/*.c)
@@ -17,7 +16,9 @@ foreach(test ${tests})
     add_executable(${stem} ${test})
 
     # Make sources available to the test
-    target_link_libraries(${stem} src)
+    # TODO: Surely there is a better way to do this, steps is defined in example
+    # perhaps don't do add_executable and target_link_libraries here?
+    target_link_libraries(${stem} src steps)
 
     # Find out how many scenarios are defined
     file(READ ${test} contents)
