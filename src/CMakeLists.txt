@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 
 # Add seaflow sources
-add_library(src debug.h seaflow.h seasteps.h seasteps.c)
+add_library(seaflow debug.h seaflow.h seasteps.h seasteps.c)
 
 foreach(test ${SEAFLOW_TESTS})
     # Get test name from path
@@ -13,7 +13,7 @@ foreach(test ${SEAFLOW_TESTS})
     # Make sources available to the test
     # TODO: Surely there is a better way to do this, steps is defined in example
     # perhaps don't do add_executable and target_link_libraries here?
-    target_link_libraries(${stem} src steps)
+    target_link_libraries(${stem} seaflow steps)
 
     # Find out how many scenarios are defined
     file(READ ${test} contents)
