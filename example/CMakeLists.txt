@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.19)
 project(Tests C)
 
 # TODO: surely there is a better way to do this
-add_library(steps examplesteps.h examplesteps.c)
+add_library(steps steps/examplesteps.h steps/examplesteps.c)
 
 enable_testing()
 
