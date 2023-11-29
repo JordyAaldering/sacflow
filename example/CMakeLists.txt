@@ -9,7 +9,6 @@ include_directories(steps)
 file(GLOB steps CONFIGURE_DEPENDS steps/*.c)
 add_library(steps ${steps})
 
-
 # Make seaflow headers available in tests
 include_directories(seaflow/src)
 # Include seaflow project

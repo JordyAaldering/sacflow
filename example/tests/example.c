@@ -7,13 +7,13 @@ AS_A(compiler developer)
 I_WANT(to be able to write tests easily)
 SO_THAT(we can ensure good quality of the compiler)
 
-FEATURE(example, parse_error, returns)
+FEATURE(example feature)
 {
-    BACKGROUND
+    BACKGROUND()
         GIVEN(a_compiler, "sac2c")
         GIVEN(arguments, "-noprelude")
 
-    SCENARIO(parse_error)
+    SCENARIO(parse error)
         GIVEN(a_file, "a.sac", STR(
             int main()
             {
@@ -36,3 +36,4 @@ FEATURE(example, parse_error, returns)
         WHEN(i_run_it)
         THEN(the_result_is, 123)
 }
+ENDFEATURE()

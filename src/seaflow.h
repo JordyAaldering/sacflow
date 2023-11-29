@@ -32,44 +32,27 @@
 #define I_WANT(_)
 #define SO_THAT(_)
 
-#define FEATURE(name, ...)                                          \
-    FORWARD_DECL(NUM_ARGS(__VA_ARGS__), __VA_ARGS__)                \
-                                                                    \
-    void (*scenarios[])(void) = { __VA_ARGS__ };                    \
-                                                                    \
+#define FEATURE(...)                                                \
     int main(int argc, char* argv[])                                \
     {                                                               \
-        if (argc == 1) {                                            \
-            return NUM_ARGS(__VA_ARGS__);                           \
-        } else {                                                    \
-            int choice;                                             \
-            if(sscanf(argv[1], "%d", &choice) != 1) {               \
-                printf("Expected a number, got '%s'\n", argv[1]);   \
-                return 1;                                           \
-            }                                                       \
-            if (choice < 0 || choice > NUM_ARGS(__VA_ARGS__) - 1) { \
-                printf("Choice %d out of bounds", choice);          \
-                return 1;                                           \
-            }                                                       \
-            printf("Running test %d\n", choice);                    \
-            scenarios[choice]();                                    \
-            return 0;                                               \
-        }                                                           \
-    }                                                               \
-                                                                    \
-    void background(void)
+        int choice;                                                 \
+        if(sscanf(argv[1], "%d", &choice) != 1) {                   \
+            printf("Expected a number, got '%s'\n", argv[1]);       \
+            return 1;                                               \
+        }
 
-#define BACKGROUND
+#define BACKGROUND(_)
 
 #define SCENARIO(name)                                              \
-    } /* Close background, or previous scenario */                  \
+    } /* Close previous scenario */                                 \
                                                                     \
-    static void name(void) {                                        \
-        printf("Running scenario " #name "\n");                     \
-        background();
+    if (choice-- == 0) {                                            \
+        printf("Scenario: " #name "\n");
 
 #define GIVEN(func, ...) func(__VA_ARGS__);
 #define WHEN(func, ...) func(__VA_ARGS__);
 #define THEN(func, ...) func(__VA_ARGS__);
+
+#define ENDFEATURE(...) return 0; }
 
 #endif /* _SEAFLOW_H_ */
