@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.19)
 
 # Add seaflow sources
-add_library(seaflow debug.h seaflow.h seasteps.h seasteps.c)
+add_library(seaflow src/debug.h src/seaflow.h src/seasteps.h src/seasteps.c)
 
 # Remove all logic here and place it in some script file that can be reused by project using seaflow?
 foreach(test ${SEAFLOW_TESTS})
@@ -31,5 +31,4 @@ foreach(test ${SEAFLOW_TESTS})
         message(STATUS "Adding test scenario ${scenario_name} for ${stem}")
         add_test("${stem} scenario: ${scenario_name}" ${stem} ${i})
     endforeach()
-
 endforeach()

@@ -10,6 +10,7 @@ enable_testing()
 file(GLOB tests tests/*.c)
 set(SEAFLOW_TESTS ${tests})
 
-# Note that in a normal folder structure these would just be:
-include_directories(sacflow/src PUBLIC)
-add_subdirectory(sacflow/src)
+# Make seaflow headers available in tests
+include_directories(seaflow/src PUBLIC)
+# Include seaflow project
+add_subdirectory(seaflow)
