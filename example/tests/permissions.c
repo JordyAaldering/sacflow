@@ -20,7 +20,7 @@ FEATURE(shell files require permissions)
         THEN(the_shell_succeeds)
         AND(the_output_contains, "Hello, world!")
 
-    SCENARIO(ì dont chmod)
+    SCENARIO(i dont chmod)
         WHEN(i_run, "./chmod.sh")
         THEN(permission_denied)
 }
