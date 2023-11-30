@@ -24,12 +24,12 @@ FEATURE(shell files can print)
         AND(i_chmod, "echo.sh")
 
     SCENARIO(print hello)
-        WHEN(i_run, "./echo.sh 0")
+        WHEN(i_execute, "./echo.sh 0")
         THEN(the_shell_succeeds)
         AND(the_output_contains, "Hello, world!")
 
     SCENARIO(print goodbye)
-        WHEN(i_run, "./echo.sh 1")
+        WHEN(i_execute, "./echo.sh 1")
         THEN(the_shell_succeeds)
         AND(the_output_contains, "Goodbye, world!")
 }

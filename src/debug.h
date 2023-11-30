@@ -5,7 +5,7 @@
 #include <errno.h>
 #include <stdio.h>
 
-#define LOG_ERROR(M, ...) fprintf(stderr, "%s:%d " M "\n", __FILE__, __LINE__, ##__VA_ARGS__)
-#define ASSERT(A, M, ...) if(!(A)) { LOG_ERROR(M, ##__VA_ARGS__); assert(A); }
+#define LOG_ERROR(fmt, ...) fprintf(stderr, "%s:%d " fmt "\n", __FILE__, __LINE__, ##__VA_ARGS__)
+#define ASSERT(cond, fmt, ...) if(!(cond)) { LOG_ERROR(fmt, ##__VA_ARGS__); assert(cond); }
 
 #endif /* _DEBUG_H_ */
