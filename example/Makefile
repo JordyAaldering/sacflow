@@ -1,10 +1,10 @@
 BUILD_DIR := build
 
 define BUILD_EXAMPLE =
-	mkdir -p $(1);    \
-	cd $(1);          \
-	cmake ../example; \
-	$(MAKE);          \
+	mkdir -p $(1); \
+	cd $(1);       \
+	cmake ..;      \
+	$(MAKE);       \
 	cd -
 endef
 

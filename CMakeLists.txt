@@ -4,7 +4,13 @@ cmake_minimum_required(VERSION 3.19)
 file(GLOB seaflow CONFIGURE_DEPENDS src/*.c src/*.h)
 add_library(seaflow ${seaflow})
 
-macro(REGISTER_TEST test_file test_name)
+# Macro to get test name from test path
+macro(SEAFLOW_TEST_NAME test_tile test_name)
+    get_filename_component(test_name ${test_file} NAME_WE)
+endmacro()
+
+# Macro to register the tests for a feature file
+macro(SEAFLOW_REGISTER_TESTS test_file test_name)
     # Make sources available to the test
     target_link_libraries(${test_name} seaflow)
 
