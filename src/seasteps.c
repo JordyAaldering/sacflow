@@ -1,10 +1,8 @@
 #include "debug.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #include "seasteps.h"
-
-#define BUFFER_SIZE 1024
 
 /**
  * @brief Creates a new file.
@@ -12,7 +10,7 @@
  * @param filepath The file to create.
  * @param contents The file contents.
  */
-void a_file(const char *filepath, const char *contents)
+int a_file(const char *filepath, const char *contents)
 {
     FILE *pipe;
     int status;
@@ -26,6 +24,7 @@ void a_file(const char *filepath, const char *contents)
     ASSERT(status >= 0, "Could not write to file: %s", filepath);
     status = fclose(pipe);
     ASSERT(status >= 0, "Could not close file: %s", filepath);
+    return status;
 }
 
 /**
@@ -40,7 +39,7 @@ void a_file(const char *filepath, const char *contents)
 int i_execute(const char *exec_path, const char *args, char **console_output)
 {
     FILE *pipe;
-    char buffer[BUFFER_SIZE], *tmp;
+    char buffer[1024], *tmp;
     int status;
 
     // Create the command, and redirect stderr to stdout
@@ -51,7 +50,7 @@ int i_execute(const char *exec_path, const char *args, char **console_output)
     ASSERT(pipe != NULL, "Could not open process: %s", buffer);
 
     // Read all lines written to the console
-    while (fgets(buffer, BUFFER_SIZE, pipe) != NULL)
+    while (fgets(buffer, 1024, pipe) != NULL)
     {
         // Remove the newline at the end of this line
         buffer[strlen(buffer) - 1] = '\0';
@@ -75,9 +74,9 @@ int i_execute(const char *exec_path, const char *args, char **console_output)
  * @param expected The substring to match with.
  * @param amount The number of expected matches.
  */
-int string_contains(const char *contents, const char *expected, size_t amount)
+int string_contains(const char *contents, const char *expected, int amount)
 {
-    size_t count = 0;
+    int count = 0;
     size_t n = strlen(expected);
 
     const char *ptr = contents;
@@ -88,9 +87,9 @@ int string_contains(const char *contents, const char *expected, size_t amount)
 
     int success = count == amount;
     #ifndef SEAFLOW_VERBOSE
-    ASSERT(success, "Expected to find %lu occurences of %s, but found %lu in:\n%s", amount, expected, count, contents);
+    ASSERT(success, "Expected to find %d occurences of %s, but found %d in:\n%s", amount, expected, count, contents);
     #else
-    ASSERT(success, "Expected to find %lu occurences of %s, but found %lu", amount, expected, count);
+    ASSERT(success, "Expected to find %d occurences of %s, but found %d", amount, expected, count);
     #endif
 
     return success;
@@ -114,5 +113,3 @@ int string_does_not_contain(const char *contents, const char *expected)
 
     return success;
 }
-
-#undef BUFFER_SIZE

@@ -1,6 +1,5 @@
 #include "debug.h"
 #include "seasteps.h"
-
 #include "steps.h"
 
 static int status_code;
