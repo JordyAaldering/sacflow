@@ -5,6 +5,9 @@ file(GLOB seaflow CONFIGURE_DEPENDS src/*.c src/*.h)
 add_library(seaflow ${seaflow})
 
 macro(REGISTER_TEST test_file test_name)
+    # Make sources available to the test
+    target_link_libraries(${test_name} seaflow)
+
     # Find out how many scenarios are defined
     file(READ ${test_file} contents)
     # TODO: can probably use REGEX REPLACE here already to get scenario names, instead of in for loop

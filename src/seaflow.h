@@ -34,7 +34,7 @@
 
 #define ENDFEATURE(...)                                             \
         if (choice >= 0) {                                          \
-            printf("Choice %d does not exist\n", choice);           \
+            printf("Choice %s does not exist\n", argv[1]);          \
             return 1;                                               \
         }                                                           \
         return 0;                                                   \

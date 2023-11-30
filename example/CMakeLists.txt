@@ -23,7 +23,7 @@ foreach(test_file ${tests})
     add_executable(${test_name} ${test_file})
 
     # Make sources available to the test
-    target_link_libraries(${test_name} seaflow steps)
+    target_link_libraries(${test_name} steps)
 
     REGISTER_TEST(${test_file} ${test_name})
 endforeach()
