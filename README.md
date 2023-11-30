@@ -12,13 +12,13 @@ AS_A(compiler developer)
 I_WANT(to be able to write tests easily)
 SO_THAT(we can ensure good quality of the compiler)
 
-FEATURE(example, parse_error, returns)
+FEATURE(an example feature)
 {
     BACKGROUND
         GIVEN(a_compiler, "sac2c")
         GIVEN(arguments, "-noprelude")
 
-    SCENARIO(parse_error)
+    SCENARIO(parse error)
         GIVEN(a_program, STR(
             int main()
             {
@@ -29,7 +29,7 @@ FEATURE(example, parse_error, returns)
         THEN(compilation_fails)
         THEN(compile_output_contains, "Failed to construct a syntax tree", 1)
 
-    SCENARIO(returns)
+    SCENARIO(it returns)
         GIVEN(a_program, STR(
             int main()
             {
@@ -41,6 +41,7 @@ FEATURE(example, parse_error, returns)
         WHEN(i_run_it)
         THEN(the_result_is, 123)
 }
+ENDFEATURE()
 ```
 
 Generates an output:
