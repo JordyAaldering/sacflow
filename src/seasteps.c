@@ -17,6 +17,9 @@ void a_file(const char *filepath, const char *contents)
     FILE *pipe;
     int status;
 
+    // Remove the file if it already exists
+    remove(filepath);
+
     pipe = fopen(filepath, "w");
     ASSERT(pipe != NULL, "Could not open file: %s", filepath);
     status = fprintf(pipe, "%s", contents);
@@ -84,8 +87,8 @@ int string_contains(const char *contents, const char *expected, size_t amount)
     }
 
     int success = count == amount;
-    #ifdef SEAFLOW_VERBOSE
-    ASSERT(success, "Expected to find %lu occurences of %s, but found %lu in %s", amount, expected, count, contents);
+    #ifndef SEAFLOW_VERBOSE
+    ASSERT(success, "Expected to find %lu occurences of %s, but found %lu in:\n%s", amount, expected, count, contents);
     #else
     ASSERT(success, "Expected to find %lu occurences of %s, but found %lu", amount, expected, count);
     #endif
@@ -104,7 +107,7 @@ int string_does_not_contain(const char *contents, const char *expected)
     int success = strstr(contents, expected) == NULL;
 
     #ifdef SEAFLOW_VERBOSE
-    ASSERT(success, "Expected to find no occurences of %s in %s", expected, contents);
+    ASSERT(success, "Expected to find no occurences of %s in:\n%s", expected, contents);
     #else
     ASSERT(success, "Expected to find no occurences of %s", expected);
     #endif
